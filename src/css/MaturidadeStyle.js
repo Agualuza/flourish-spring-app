@@ -72,7 +72,7 @@ const style = StyleSheet.create({
     titleHeader: {
         fontSize: 20,
         fontWeight: 'bold',
-        right:20,
+        right:37,
         color: '#449aa4'
     },
     header: {

@@ -65,6 +65,10 @@ export default function ModuloHome({ navigation }) {
                 </View>
             </View>
 
+            <View style={Style.body}>
+
+            </View>
+
             {/* Footer */}
             <View style={Style.footer}>
                 <View style={Style.menuFooter}>

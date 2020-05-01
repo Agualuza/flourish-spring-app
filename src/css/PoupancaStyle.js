@@ -11,7 +11,7 @@ const style = StyleSheet.create({
         backgroundColor: '#f2f2f2',
         paddingHorizontal: 0,
         padding: Constant.statusBarHeight,
-
+ 
         height: height,
         justifyContent: 'flex-start',
     },
@@ -26,7 +26,7 @@ const style = StyleSheet.create({
     },
 
     titleHeader: {
-        right:37,
+        marginRight: 150,
         fontSize: 20,
         fontWeight: 'bold',
         color: '#449aa4'
@@ -58,7 +58,7 @@ const style = StyleSheet.create({
         flexDirection: 'row-reverse',
         width: width,
         justifyContent: 'flex-start'
-            // marginBottom: 500
+        // marginBottom: 500
     },
 
     containerImgMoney: {
@@ -66,10 +66,14 @@ const style = StyleSheet.create({
         alignItems: 'center',
     },
 
+    textMenu: {
+
+    },
+
     containerMenuMoney: {
         width: 90,
         height: 40,
-        backgroundColor: '#fff',
+        backgroundColor:'#fff',
         borderRadius: 30,
         justifyContent: 'center',
         justifyContent: 'space-between',
@@ -77,10 +81,10 @@ const style = StyleSheet.create({
         flexDirection: 'row',
     },
 
-    containerMenuNota: {
+    containerMenuNota:{
         width: 160,
         height: 35,
-        backgroundColor: '#fff',
+        backgroundColor:'#fff',
         borderRadius: 30,
         justifyContent: 'center',
         justifyContent: 'space-between',
@@ -101,32 +105,22 @@ const style = StyleSheet.create({
         marginLeft: 10
     },
 
+    menuMoney: {
+
+    },
+
     menuFooter: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 40
     },
-
-    valor: {
+    valor:{
         marginRight: 5,
         fontSize: 20,
         fontWeight: 'bold'
     },
-
-    FlatList: {
-        flex: 1,
-        padding: 20,
-
-    },
-    Item: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        lineHeight: 60,
-        marginLeft: 10
-    },
-    containerItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
+    body:{
+        flex:1
     }
 });
 

@@ -26,7 +26,7 @@ const style = StyleSheet.create({
     },
 
     titleHeader: {
-        right:37,
+        marginRight: 130,
         fontSize: 20,
         fontWeight: 'bold',
         color: '#449aa4'
@@ -58,7 +58,7 @@ const style = StyleSheet.create({
         flexDirection: 'row-reverse',
         width: width,
         justifyContent: 'flex-start'
-            // marginBottom: 500
+        // marginBottom: 500
     },
 
     containerImgMoney: {
@@ -116,15 +116,15 @@ const style = StyleSheet.create({
     FlatList: {
         flex: 1,
         padding: 20,
-
+ 
     },
-    Item: {
+    Item:{
         fontSize: 20,
         fontWeight: 'bold',
         lineHeight: 60,
         marginLeft: 10
     },
-    containerItem: {
+    containerItem:{
         flexDirection: 'row',
         alignItems: 'center',
     }

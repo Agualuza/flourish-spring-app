@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
-import { View, Image, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
+import { View, Image, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
+import Constants from 'expo-constants';
 
 // Estilos
 import Style from '../css/HomeStyle'
+import InvestStyle from '../css/InvestStyle'
 
 // Imagens
 import Porquinho from '../images/porquinho.png'
@@ -15,7 +16,71 @@ import Moeda from '../images/moeda.png';
 import Nota from '../images/nota.png'
 
 let menuState = 'menu'
-export default function ModuloInvestimentos({navigation}) {
+
+const DATA = [
+    {
+        id: 1,
+        title: 'Poupança',
+        img: '',
+        desc: 'teste',
+        color: '#ff4'
+    },
+    {
+        id: 2,
+        title: 'CDB',
+        img: '',
+        desc: 'teste'
+    },
+    {
+        id: 3,
+        title: 'LCI',
+        img: '',
+        desc: 'teste'
+    },
+    {
+        id: 4,
+        title: 'SELIC',
+        img: '',
+        desc: 'teste'
+    },
+    {
+        id: 4,
+        title: 'SELIC',
+        img: '',
+        desc: 'teste'
+    },
+    {
+        id: 4,
+        title: 'SELIC',
+        img: '',
+        desc: 'teste'
+    },
+    {
+        id: 4,
+        title: 'SELIC',
+        img: '',
+        desc: 'teste'
+    },  {
+        id: 4,
+        title: 'SELIC',
+        img: '',
+        desc: 'teste'
+    }
+];
+
+function Item({ title }) {
+    return (
+        <View style={InvestStyle.containerItem}>
+            <Image source={Moeda} style={InvestStyle.ImgMoney} />
+            <TouchableOpacity>
+                <Text style={InvestStyle.Item}>{title}</Text>
+            </TouchableOpacity>
+            <Feather name="arrow-right" style={{ fontSize: 20 }} />
+        </View>
+    );
+}
+
+export default function ModuloInvestimentos({ navigation }) {
 
     function navigationToMap() {
         navigation.navigate('Mapa');
@@ -65,27 +130,18 @@ export default function ModuloInvestimentos({navigation}) {
                 </View>
             </View>
 
-            <FlatList data={[1, 2]}
-                style={Style.FlatList}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={incident => String(incident)}
-                renderItem={() => (
-                    <View style={{
-                        incident: {
-                            padding: 24,
-                            backgroundColor: '#3ff4',
-                            borderRadius: 8,
-                            marginBottom: 16,
-                            justifyContent: 'center',
-                            height: 150
-                        },
-                    }}>
-                        <Text>
-                            Lucas teste
-                        </Text>
-                    </View>
-                )}>
-            </FlatList>
+
+            <View style={InvestStyle.FlatList}>
+                <FlatList
+                    data={DATA}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) =>
+                        <Item title={item.title} />
+
+                    }
+                />
+            </View>
+
 
             {/* Footer */}
             <View style={Style.footer}>
