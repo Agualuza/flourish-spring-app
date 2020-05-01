@@ -8,26 +8,27 @@ const height = Dimensions.get('screen').height;
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f2f2f2',
         paddingHorizontal: 0,
-        padding: Constant.statusBarHeight,
+        paddingTop: Constant.statusBarHeight,
+        backgroundColor: '#f2f2f2',
         justifyContent: 'space-between',
-        height: height
+        height: height,
     },
 
     header: {
         flexDirection: "row",
         height: 80,
         backgroundColor: '#daf8cf',
+        paddingHorizontal:10,
         width: width,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center'
     },
 
     titleHeader: {
-        marginRight: 150,
         fontSize: 20,
         fontWeight: 'bold',
+        right:20,
         color: '#449aa4'
     },
 
@@ -46,17 +47,17 @@ const style = StyleSheet.create({
 
     money: {
         flexDirection: 'row',
+        justifyContent: 'flex-end',
+        paddingRight: 5,
         backgroundColor: '#5ec65b',
         width: width * 0.70,
         height: 50,
-        justifyContent: 'center',
         borderBottomStartRadius: 15
     },
 
     containerMoney: {
         flexDirection: 'row-reverse',
         width: width,
-        marginBottom: 500
     },
 
     containerImgMoney: {
@@ -69,23 +70,23 @@ const style = StyleSheet.create({
     },
 
     containerMenuMoney: {
-        width: 90,
+        width: 105 - (width * 0.05),
         height: 40,
         backgroundColor:'#fff',
         borderRadius: 30,
         justifyContent: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         alignItems: 'center',
         flexDirection: 'row',
     },
 
     containerMenuNota:{
-        width: 160,
+        width: 160 - (width*0.5),
         height: 35,
         backgroundColor:'#fff',
         borderRadius: 30,
         justifyContent: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         marginRight: 25,
         alignItems: 'center',
         flexDirection: 'row',

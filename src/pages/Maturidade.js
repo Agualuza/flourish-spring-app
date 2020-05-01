@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Dimensions, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // Estilos
 import Style from '../css/HomeStyle'
-
+import MaturidadeStyle from '../css/MaturidadeStyle'
+import ProgressBarAnimated from 'react-native-progress-bar-animated';
 // Imagens
 import Porquinho from '../images/porquinho.png'
 import Mapa from '../images/local.png';
 import Trofeu from '../images/trofeu.png'
 import Moeda from '../images/moeda.png';
 import Nota from '../images/nota.png'
+import Flourish from '../images/flourish3.png'
 
 let menuState = 'menu'
 export default function ModuloMaturidade({navigation}) {
-
+    
     function navigationToMap() {
         navigation.navigate('Mapa');
     }
@@ -28,13 +30,22 @@ export default function ModuloMaturidade({navigation}) {
     function navigationToPoupanca() {
         navigation.navigate('Poupanca')
     }
+
+    const barWidth = Dimensions.get('screen').width - 100;
+
+    const progress = {
+        progress: 20,
+        progressWithOnComplete: 20,
+        progressCustomized: 0,
+    }
+
     return (
 
         // Container global
         <View style={Style.container}>
 
-            {/* Top */}
-            <View style={Style.header}>
+           {/* Top */}
+           <View style={Style.header}>
                 <TouchableOpacity onPress={() => navigation.openDrawer()}>
                     <Feather name={menuState}
                         color="#000"
@@ -59,9 +70,30 @@ export default function ModuloMaturidade({navigation}) {
                             <Image source={Moeda} style={Style.ImgMoney} />
                             <Text style={Style.valor}>0</Text>
                         </View>
-
+                    
                     </View>
+                    
                 </View>
+            </View>
+
+        {/* Body */}
+            <View style={MaturidadeStyle.containerMaturidade}>
+                    <Text style={MaturidadeStyle.labelLevel}>Baby</Text>
+                    <ImageBackground style={MaturidadeStyle.tinyLogo} source={Flourish}>
+                        <Text style={MaturidadeStyle.labelPoints}>0</Text>
+                    </ImageBackground>
+                    <View style={MaturidadeStyle.containerProgress}>
+                        <Text style={MaturidadeStyle.labelLevelProgress} >Baby</Text>
+                        <ProgressBarAnimated
+                            {...MaturidadeStyle.progressCustomStyles}
+                            width={barWidth}
+                            value={progress.progressWithOnComplete}
+                            onComplete={() => {
+                            Alert.alert('Parabéns você avançou de level');
+                            }}
+                        />
+                        <Text style={Style.labelLevelProgress} >Child</Text>
+                    </View>
             </View>
 
             {/* Footer */}
