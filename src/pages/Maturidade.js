@@ -16,9 +16,12 @@ import Moeda from '../images/moeda.png';
 import Nota from '../images/nota.png'
 import Flourish from '../images/flourish3.png'
 
+// Componentes
+import MaturidadeContent from './MaturidadeContent';
+
 let menuState = 'menu'
 export default function ModuloMaturidade({navigation}) {
-    
+
     function navigationToMap() {
         navigation.navigate('Mapa');
     }
@@ -31,6 +34,21 @@ export default function ModuloMaturidade({navigation}) {
         navigation.navigate('Poupanca')
     }
 
+    function getUserData(){
+        var url = "https://infinite-fortress-20170.herokuapp.com/api/customer/token";
+        var text = '{"token":"9775f681333e9ada4a9e8ed316d03578" , "id":2}';
+        var obj = JSON.parse(text);
+        axios.post(url, {
+            credentials: obj,
+          })
+          .then(function (response) {
+            Alert.alert(response);
+          })
+          .catch(function (error) {
+            Alert.alert(error);
+          });
+    }
+
     const barWidth = Dimensions.get('screen').width - 100;
 
     const progress = {
@@ -40,81 +58,7 @@ export default function ModuloMaturidade({navigation}) {
     }
 
     return (
-
-        // Container global
-        <View style={Style.container}>
-
-           {/* Top */}
-           <View style={Style.header}>
-                <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                    <Feather name={menuState}
-                        color="#000"
-                        style={Style.arrow} />
-                </TouchableOpacity>
-                <Text style={Style.titleHeader}>
-                    Maturidade
-                </Text>
-            </View>
-
-            {/* Valor da Moeda lateral Direita */}
-            <View style={Style.containerMoney}>
-                <View style={Style.money}>
-                    <View style={Style.containerImgMoney}>
-
-                        <View style={Style.containerMenuNota}>
-                            <Image source={Nota} style={Style.ImgNota} />
-                            <Text style={Style.valor}>R$ 0</Text>
-                        </View>
-
-                        <View style={Style.containerMenuMoney}>
-                            <Image source={Moeda} style={Style.ImgMoney} />
-                            <Text style={Style.valor}>0</Text>
-                        </View>
-                    
-                    </View>
-                    
-                </View>
-            </View>
-
-        {/* Body */}
-            <View style={MaturidadeStyle.containerMaturidade}>
-                    <Text style={MaturidadeStyle.labelLevel}>Baby</Text>
-                    <ImageBackground style={MaturidadeStyle.tinyLogo} source={Flourish}>
-                        <Text style={MaturidadeStyle.labelPoints}>0</Text>
-                    </ImageBackground>
-                    <View style={MaturidadeStyle.containerProgress}>
-                        <Text style={MaturidadeStyle.labelLevelProgress} >Baby</Text>
-                        <ProgressBarAnimated
-                            {...MaturidadeStyle.progressCustomStyles}
-                            width={barWidth}
-                            value={progress.progressWithOnComplete}
-                            onComplete={() => {
-                            Alert.alert('Parabéns você avançou de level');
-                            }}
-                        />
-                        <Text style={Style.labelLevelProgress} >Child</Text>
-                    </View>
-            </View>
-
-            {/* Footer */}
-            <View style={Style.footer}>
-                <View style={Style.menuFooter}>
-                    <TouchableOpacity onPress={navigationToMap}>
-                        <Image source={Mapa} style={{ height: 69, width: 50 }} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={navigationToPoupanca}>
-                        <Image source={Porquinho} style={{ height: 85, width: 90 }} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={navigationToGame}>
-                        <Image source={Trofeu} style={{ height: 90, width: 90 }} />
-                    </TouchableOpacity>
-                </View>
-
-
-            </View>
-        </View>
+        <MaturidadeContent nav={navigation} navToMap={navigationToMap} navToPoupanca={navigationToPoupanca} navToGame={navigationToGame}/>
     )
 }
 

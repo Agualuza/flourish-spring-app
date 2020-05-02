@@ -39,9 +39,15 @@ const style = StyleSheet.create({
 
     labelPoints:{
         textAlign: 'center',
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: "bold",
         color: "gray",
+    },
+
+    valor: {
+        fontSize: 15,
+        paddingHorizontal: 8,
+        fontWeight: "bold"
     },
 
     progressCustomStyles : {
